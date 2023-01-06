@@ -2,9 +2,9 @@
 
 # Variables
 resourceGroup="acdnd-c4-project"
-location="westus"
+location="eastus"
 osType="UbuntuLTS"
-vmssName="udacity-vmss"
+vmssName="udacity-vmss-proj"
 adminName="udacityadmin"
 storageAccount="udacitydiag$RANDOM"
 bePoolName="$vmssName-bepool"
@@ -14,7 +14,7 @@ nsgName="$vmssName-nsg"
 vnetName="$vmssName-vnet"
 subnetName="$vnetName-subnet"
 probeName="tcpProbe"
-vmSize="Standard_B1s"
+vmSize="Standard_B1ls"
 storageType="Standard_LRS"
 
 # Create resource group. 
@@ -59,6 +59,7 @@ az vmss create \
   --name $vmssName \
   --image $osType \
   --vm-sku $vmSize \
+  --instance-count 1 \
   --nsg $nsgName \
   --subnet $subnetName \
   --vnet-name $vnetName \
